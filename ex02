@@ -18,7 +18,7 @@ while True:
 
     opcao = input('Escolha uma opção: ')
 
-    if opcao == "i":
+    if opcao == "1":
         print("\n=== CADASTRO ===")
         nome = input("Digite seu nome: ")
         email = input("Digite seu e-mail: ")
