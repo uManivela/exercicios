@@ -1,0 +1,85 @@
+'''
+SISTEMAS DE AGENDAMENTOS DE CONSULTAS MÉDICAS
+FUNCIONALIDADES:
+Agendar consulta
+Listar consultas
+Salvar em arquivo
+Carregar consultas ao iniciar
+
+'''
+import json
+import os
+
+ARQUIVO = "consultas.json"
+
+# Carrega consultas salvas
+if os.path.exists(ARQUIVO):
+    with open(ARQUIVO, 'r', encoding="utf-8") as f:
+        consultas = json.load(f)
+else:
+    consultas = []
+
+    def salvar():
+        with open(ARQUIVO, "w", encoding='utf-8') as f:
+            json.dump(consultas, f, indent=4, ensure_ascii=False)
+
+    def agendar():
+        paciente = input('Nome do paciente: ')
+        medico = input('Nome do médico: ')
+        data = input('Data (dd/mm/aaaa): 18/02')
+        hora = input("Hora (hh:mm): ")
+
+        consulta = {
+            "paciente": paciente,
+            "medico": medico,
+            "data": data,
+            "hora": hora
+        }
+
+        consultas.append(consulta)
+        salvar()
+
+        print('\nConsulta agendada com sucesso\n')
+
+    def listar():
+        if not consultas:
+            print('\nNenhuma consulta cadastrada')
+            return
+        
+        print('\n=== CONSULTAS AGENDADAS ===')
+        for i, c in enumerate(consultas, start=1):
+            print(
+                f'{i}. Paciente: {c['Paciente']} | '
+                f"Médico: {c['medico']} | "
+                f"Data: {c['data']} | "
+                f"Hora: {c['hora']}"
+            )
+        print()
+
+    while True:
+        print('=== SISTEMA DE CONSULTAS ===\n')
+        print('1 - Agendar consulta')
+        print('2 - Listar consultas')
+        print('3 - Sair')
+
+        opcao = input('Escolha uma opção: ')
+
+        if opcao == "1":
+            agendar()
+        elif opcao == "2":
+            listar()
+        elif opcao == "3":
+            print('Encerrando sistema...')
+            break
+        else:
+            print('Opção inválido! \n')
+
+            '''
+            Salve como consultas.py
+            Abra o terminal na pasta do arquivo
+            Execute:
+
+            '''
+
+            # python consultas.py
+            # execute com esse comando no terminal para rodar o sistema de agendamento de consultas médicas.
