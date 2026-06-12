@@ -1,0 +1,13 @@
+# Programa para lembrar de tomar medicamentos
+
+import datetime
+
+medicamento = input('Nome do medicamento: ')
+horario = input("Horário (HH:MM): ")
+
+agora = datetime.datetime.now().strftime("%H:&M")
+
+if agora == horario:
+    print(f'Hora de tomar {medicamento}!')
+else:
+    print(f'Próxima dose de {medicamento} às {horario}.')
