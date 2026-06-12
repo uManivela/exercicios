@@ -17,3 +17,6 @@ print(df["Glicose"].mean)
 #pip install panda
 #sudo apt install pandas
 #pip install python3-pandas
+#pip install sudo
+#pip install pip
+#ninget update -- mostra todos arquivo desatualizado
