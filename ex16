@@ -1,0 +1,26 @@
+'''
+ Faça um programa que mostre todos os primos entre 1 e N sendo N um número inteiro fornecido pelo usuário.
+ O programa deverá mostrar tambem o numero de divisões que ele executou para encontrar os números primos. 
+ Serão avaliados o funcionamento, o estilo e o número de testes (divisões) executados.
+'''
+
+count = 0
+divide = []
+num = int(input("Digite um número: "))
+
+for i in range(1,num + 1):
+    if num % i == 0:
+        print('\033[32m', end='')
+        count += 1
+        divide.append(i)
+
+    else:
+        print('\033[32m', end='')
+    print(f'{i}', end='')
+
+print(f'\n\033[m0 número {num} foi divisível {count} vezes. ')
+
+print(f'Divisores de {num}: {divide}')
+
+print(f"{num} é primo. " if len(divide) == 2 else f'{num} não é primo. ')
+
