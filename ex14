@@ -1,0 +1,14 @@
+# faça um programa que imprima na tela apenas os numeros impares entre 1 e 50
+
+num = 0
+while num < 50:          # enquanto "num" for menor que 50
+    num +=1
+    if num % 2!= 0:      # divisão numero ímpar (se o resto da div for diferente de zero)
+        print (num)
+
+
+num = 0
+while num < 50:
+    num +=1
+    if num % 2== 0:      # divisão numero par (se o resto da div for igual a 0)
+        print (num)
