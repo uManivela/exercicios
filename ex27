@@ -1,0 +1,17 @@
+# O Departamento Estadual de Metodologia lhe contratou para desenvolver um programa que leia um conjunto inderteminado de temperaturas e informe ao final qual a menor e a maior temperaturas, bem como a média das temperatuas.
+
+qty_temp = int(input("Quantos dias: "))
+
+temp_list = []
+for i in range(qty_temp):
+        temperaturas = int(input(f'Tempo no {i+1}º dia: '))
+
+        temp_list.append(temperaturas)
+
+print(temp_list)
+
+media = (sum(temp_list) / qty_temp)
+
+print(f"Máxima de {max(temp_list):.0f}ºC")
+print(f"Mínima de {min(temp_list):.0f}ºC")
+print(f"Média de {media:.0f}ºC")
