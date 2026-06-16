@@ -1,0 +1,71 @@
+import os
+import shutil
+
+# Define a pasta que está bagunçada
+pasta_alvo = r"C:\Users\GustavoFerreiraCosta\Downloads"
+
+# Verifica se a pasta existe
+if not os.path.exists(pasta_alvo):
+    print(f"ERRO: Pasta '{pasta_alvo} não existe!")
+    print(f"Caminho atual: {os.getcwd()}")
+    # Tenta usar pasta Downloads do usuário atual
+    pasta_alvo = os.path.join(os.environ['USERPROFILE'], 'Downloads')
+    print(f"Usando pasta: {pasta_alvo}")
+
+regras = {
+    'documentos': ['.pdf', '.docx', '.txt', '.xlsx'],
+    'imagens': ['.jpg', '.jpeg', '.png', '.gif'],
+    "videos": ['.mp4', '.avi', '.mkv'],
+    'musicas': ['.mp3', '.wav', '.flac'],
+    "planilhas": ['.xlsx', '.csv'],
+}
+
+# Verifica quantos arquivos existem
+arquivos = os.listdir(pasta_alvo)
+print(f"Foi encontrado {len(arquivos)} arquivo(s) na pasta Downloads.")
+
+organizados = 0
+
+for arquivo in os.listdir(pasta_alvo):
+    caminho_arquivo = os.path.join(pasta_alvo, arquivo)
+
+    # Ignora pastas
+    if not os.path.isfile(caminho_arquivo):
+        continue
+
+    nome, extenso = os.path.splitext(arquivo)
+    extensao = extenso.lower().replace('.', '')
+
+    # Se não tem extensão, ignora
+    if extensao == "":
+        print(f'Ignorando arquivo sem extensão: {arquivo}')
+        continue
+
+    encontrou = False
+
+    for pasta, lista_extensao in regras.items():
+        if extensao in lista_extensao:
+            pasta_destino = os.path.join(pasta_alvo, pasta)
+
+            # Criar pasta se não existe
+            os.makedirs(pasta_destino, exist_ok=True)
+
+            print(f'Movendo "{arquivo}" para "{pasta}/"')
+
+            shutil.move(
+                caminho_arquivo,
+                os.path.join(pasta_destino, arquivo)
+            )
+
+            organizados += 1
+            encontrou = True
+            break
+
+    if not encontrou:
+        print(f"Tipo não reconhecido para: {arquivo} (.{extensao})")
+
+print('=' * 50)
+print(f'ORGANIZAÇÃO CONCLUÍDA!')
+print(f'Organizados: {organizados} arquivo(s)')
+print(f'Pasta: {pasta_alvo}')
+print('=' * 50)
