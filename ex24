@@ -1,0 +1,8 @@
+# Contexto Real: Uma secretária precisa anotar lembretes rápidos em um arquivo de texto para não esquecer as tarefas do dia.
+
+content = input("Digite aqui o seu lembrete: ")
+
+with open('notas.txt','w', encoding='utf-8') as arquivo:
+    arquivo.write(content)
+
+print('Informação salva com sucesso!!!')
