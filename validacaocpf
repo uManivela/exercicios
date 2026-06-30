@@ -1,0 +1,51 @@
+def validar_cpf(cpf):
+    # Remove pontos e traços, mantendo apenas os digitos
+    cpf = ''.join(ch for ch in cpf if ch.isdigit())
+
+    # Verifica se o CPF tem exatamente 11 digitos
+    if len(cpf) != 11:
+        return False
+    
+    #Rejeita CPFs com todos os dígitos iguais, como 1111111111111111
+
+    if cpf == cpf[0] * 11:
+        return False
+    
+    # Converte os caracteres em números inteiros
+    numeros = [int(digito) for digito in cpf]
+
+    # Calcula o primeiro digito verificador
+    soma1 = 0
+    for i in range(9):
+        soma1 += numeros[i] * (10 - i)
+
+    resto1 = (soma1 * 10) % 11
+    if resto1 ==10:
+        resto1 = 0
+
+    #Confere se o primeiro digito bate com o informado
+    if resto1 != numeros[9]:
+        return False
+    
+    # Calcula o segundo digito verificador
+    soma2 = 0
+    for i in range(10):
+        soma2 += numeros[i] * (11 - i)
+
+    resto2 = (soma2 * 10) % 11
+    if resto2 == 10:
+        resto2 = 0
+
+    #  Confere se o segundo dígito bate com o informado
+    if resto2 != numeros[10]:
+        return False
+    
+    # Se passou em todas as etapas, o CPF é válido
+    return True
+
+# Exemplo de uso
+cpf_teste = '364.878.215-00'
+if validar_cpf(cpf_teste):
+    print("CPF válido")
+else:
+    print('CPF inválido')
