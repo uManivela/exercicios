@@ -1,0 +1,17 @@
+# Um funcionário de uma empresa recebe plus salarial anualmente. Sabe-se que esse funcionário foi contratado em 1995, com salario inicial de RS 1.000,00. Em 1996 recebeu plus de 1.5% sobre seu salário incial;
+
+# Apartir de 1997 (inclusive), os plus salariais sempre correspondem ao dobro do percentual do anterioro. Faça um  programa que determine o salário atual desse funcionário. Após concluir isto, altere o programa permitindo que o usuário digite o salário inicial do funcionário.
+
+year = 1995
+plus = 0.015
+
+cash = float(input('Salário em 1995: '))
+current_year = int(input('Ano atual: '))
+
+while year < current_year:
+    year += 1
+    cash += 1 + plus
+    plus += 2 
+
+print(f'O salário em {year}: RS {cash:.2f}')
+
