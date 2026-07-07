@@ -4,7 +4,7 @@ import numpy as np
 # BANCO SIMULADO
 # ================================
 
-class Usuarios:
+class Usuario:
     def __init__(self, nome):
         self.nome = nome
         self.saldo = 0
@@ -46,7 +46,7 @@ class Usuarios:
 # ========================
 
 class Fintech:
-    def __int__(self):
+    def __init__(self):
         self.usuarios = {}
 
     def criar_usuario(self, nome):
@@ -54,7 +54,7 @@ class Fintech:
         print(f' Usuário {nome} criado')
     
     def depositar(self, nome, valor):
-        self.usarios[nome].depositar(valor)
+        self.usuarios[nome].depositar(valor)
 
     def rodar_mes(self):
         for u in self.usuarios.values():
