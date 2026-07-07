@@ -1,0 +1,49 @@
+# bibliotecas = pacotes de código
+# pip install pyautogui
+
+
+import pyautogui
+import time
+
+# pyautogui.click -> Clica
+# pyautogui.write -> Escreve texto
+# pyautogui.press -> Aperta uma tecla
+# pyautogui.hotkey -> Aperta um atalho (hotkey)
+pyautogui.PAUSE = 0.5
+link = 'https://dlp.hashtagtreinamentos.com/python/intensivao/login'
+# Passo a passo do seu programa
+# Passo 1: Entrar no sistema da empresa
+pyautogui.press('win')
+pyautogui.write('chrome')
+pyautogui.press('enter')
+
+pyautogui.write(link)
+pyautogui.press('enter')
+# fazer uma pausa maior pro site carregar
+time.sleep(3) # pyautogui hashtag
+
+
+
+# Passo 2: Fazer Login
+# clicar no campo de email
+pyautogui.click(x=498, y=363)
+pyautogui.write('pythonimpressionador@gmail.com')
+pyautogui.press('tab') # passar para o próximo campo
+pyautogui.write('1234')
+pyautogui.press('tab') 
+pyautogui.press('enter')
+# fazer uma pausa para carregar o site
+time.sleep(4)
+
+# Passo 3: Abrir a base de dados
+# pip install pandas openpyxl
+import pandas
+
+tabela = pandas.read_csv('produtos.csv')
+print(tabela)
+
+
+# Passo 4: Cdastrar 1 produto
+
+
+# Passo 5: Repetir o passo 4 ate acabar a lista de produtos
